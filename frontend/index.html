@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CampusRoute AI campus delivery planner">
+    <title>CampusRoute AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+    <a class="brand" href="#top" aria-label="CampusRoute AI home">
+        <span class="brand-mark">CR</span>
+        <span><strong>CampusRoute AI</strong><small>Human-friendly campus logistics</small></span>
+    </a>
+    <div class="top-actions">
+        <span id="connectionStatus" class="status offline" role="status">Connecting</span>
+        <button id="themeToggle" class="icon-button" type="button" aria-label="Toggle light and dark theme">◐</button>
+    </div>
+</header>
+
+<main id="top" class="shell">
+    <section class="hero">
+        <div>
+            <p class="eyebrow">CAMPUS DELIVERY AGENT · P-17</p>
+            <h1>Plan a safer delivery<br><span>without learning algorithms.</span></h1>
+            <p class="hero-copy">Choose two places, tell us what matters, and the agent compares feasible searches, battery cost and live conditions for you.</p>
+        </div>
+        <div class="hero-stat"><strong>A*</strong><span>automatic route<br>selection</span></div>
+    </section>
+
+    <section class="steps" aria-label="Delivery planning steps">
+        <div class="step active"><b>01</b><span>Choose campus</span></div>
+        <div class="step"><b>02</b><span>Set delivery</span></div>
+        <div class="step"><b>03</b><span>Track route</span></div>
+    </section>
+
+    <section class="main-grid">
+        <section class="panel planner-panel" aria-labelledby="plannerTitle">
+            <div class="panel-head"><div><p class="eyebrow">NEW DELIVERY</p><h2 id="plannerTitle">Where should it go?</h2></div><span class="auto-chip">● Auto-planned</span></div>
+            <div class="field"><label for="campusSelect">Campus</label><select id="campusSelect" aria-label="Choose campus"><option>Loading campuses…</option></select><p id="campusMapStatus" class="hint"></p></div>
+            <div class="form-grid">
+                <div class="field"><label for="startLocation">Collect from</label><select id="startLocation"><option value="">Choose pickup point</option></select><button id="gpsButton" class="link-button" type="button">◎ Use my current location</button><p id="gpsMessage" class="hint" aria-live="polite"></p><button id="gpsFallbackButton" class="secondary hidden" type="button">Use nearest campus point</button></div>
+                <div class="field"><label for="destination">Deliver to</label><select id="destination"><option value="">Choose destination</option></select><p class="hint">Every point belongs to the selected campus map.</p></div>
+            </div>
+            <div class="form-grid">
+                <div class="field"><label for="itemType">Item</label><select id="itemType"><option value="FOOD">Food</option><option value="MEDICINE">Medicine</option><option value="DOCUMENT">Document</option><option value="BOOK">Book</option><option value="PHONE">Phone</option><option value="OTHER">Other</option></select></div>
+                <div class="field"><span class="label">Urgency</span><div class="priority-group" role="group" aria-label="Delivery urgency"><button data-priority="NORMAL" class="priority active" type="button">Normal</button><button data-priority="HIGH" class="priority" type="button">High</button><button data-priority="EMERGENCY" class="priority danger" type="button">Emergency</button></div></div>
+            </div>
+            <div class="form-grid"><div class="field"><label for="receiverName">Receiver name <span class="optional">optional</span></label><input id="receiverName" type="text" maxlength="80" placeholder="Who should receive it?"></div><div class="field"><label for="deliveryNote">Delivery note <span class="optional">optional</span></label><input id="deliveryNote" type="text" maxlength="160" placeholder="Gate, room or handling note"></div></div>
+            <label class="check"><input id="accessibleOnly" type="checkbox"> Prefer accessible paths</label>
+            <details class="advanced"><summary>Operator conditions</summary><div class="form-grid"><div class="field"><label for="batteryPercentage">Battery <output id="batteryValue">100%</output></label><input id="batteryPercentage" type="range" min="0" max="100" value="100"></div><div class="field"><label for="trafficLevel">Traffic</label><select id="trafficLevel"><option value="NORMAL">Normal</option><option value="HEAVY">Heavy</option><option value="SEVERE">Severe</option></select></div></div><div class="field"><label for="weatherCondition">Weather</label><select id="weatherCondition"><option value="CLEAR">Clear</option><option value="RAIN">Rain</option><option value="STORM">Storm</option></select></div><p class="hint">These inputs simulate real operating conditions for the academic demonstration.</p></details>
+            <button id="routeButton" class="primary" type="button">Plan my delivery <span>→</span></button>
+            <details class="panel tool-panel multi-tool"><summary><span><b>Multiple deliveries</b><small>See every pickup, drop-off and battery step on the map</small></span><em>+</em></summary><label for="multiStartLocation">Robot starts from</label><select id="multiStartLocation"></select><div id="multiTaskList"></div><div class="button-row"><button id="addTaskButton" class="secondary" type="button">+ Add delivery</button><button id="optimizeButton" class="primary small" type="button">Show plan on map</button></div><div id="optimizationResult" class="decision hidden"></div><div id="optimizationSteps" class="optimization-steps"></div></details>
+        </section>
+
+        <section class="panel map-panel" aria-labelledby="mapTitle">
+            <div class="panel-head"><div><p class="eyebrow">CAMPUS MAP</p><h2 id="mapTitle">Loading map…</h2></div><span id="campusArea" class="area-chip">—</span></div>
+            <p id="campusDescription" class="map-description">Loading campus structure.</p>
+            <div class="map-search"><input id="locationSearch" type="search" placeholder="Search building, gate or service"><button id="searchLocationButton" class="secondary" type="button">Find</button></div>
+            <div id="campusMap" class="leaflet-map" role="application" aria-label="Interactive campus map"></div>
+            <div class="legend"><span><i class="legend-line paved"></i>Paved</span><span><i class="legend-line rough"></i>Rough terrain</span><span><i class="legend-line blocked"></i>Blocked</span><span><i class="legend-dot route"></i>Planned route</span></div>
+            <p id="campusMapHint" class="hint"></p>
+            <section id="trackingCard" class="tracking-panel hidden" aria-live="polite"><div class="panel-head"><div><p class="eyebrow">LIVE STATUS</p><h2>Delivery tracking</h2></div><span class="live-chip"><i></i> Demo tracking</span></div><p id="trackingMessage" class="hint">Preparing agent.</p><div class="tracking-line"><strong id="trackingLocation">—</strong><span id="trackingEta">—</span></div><div class="progress"><span id="trackingProgressBar"></span></div><p id="trackingProgressText" class="hint">0%</p><div class="tracking-actions"><button id="startLiveButton" class="secondary" type="button">Share my live location</button><button id="stopLiveButton" class="secondary hidden" type="button">Stop sharing</button><button id="cancelButton" class="secondary" type="button">Cancel</button><button id="failButton" class="secondary" type="button">Report failed</button></div><div class="proof-row"><input id="confirmationCode" type="text" inputmode="numeric" maxlength="6" placeholder="6-digit receiver code"><button id="confirmDeliveryButton" class="primary small" type="button">Confirm delivery</button></div><p id="proofMessage" class="hint"></p><p id="liveLocationStatus" class="hint"></p><span id="liveAccuracy" class="hidden"></span></section>
+        </section>
+    </section>
+
+    <section id="routeResult" class="panel result-panel hidden" aria-live="polite">
+        <div class="panel-head"><div><p class="eyebrow">DELIVERY PLAN</p><h2>Route is ready</h2></div><span id="resultStatus" class="success-chip">Created</span></div>
+        <div id="decisionReason" class="decision"></div><div id="routePath" class="route-path"></div>
+        <div class="metric-grid"><div><small>Distance</small><strong id="resultDistance">—</strong></div><div><small>Estimated time</small><strong id="resultEta">—</strong></div><div><small>Elevation</small><strong id="resultElevation">—</strong></div><div><small>Strategy</small><strong id="resultStrategy">—</strong></div></div>
+        <div class="battery-card"><div><span>Battery after route</span><strong id="resultBattery">—</strong></div><div class="battery-track"><span id="batteryBar"></span></div><p id="batteryState" class="battery-state hint"></p><p id="batteryWarning" class="hint"></p></div>
+        <p id="delayReasons" class="hint"></p>
+        <details class="why-panel"><summary>Why this algorithm?</summary><p class="hint">All four required searches are evaluated for this same situation. The highlighted row is the production decision.</p><div id="algorithmAnalysis"></div></details>
+    </section>
+
+    <section class="tools-grid">
+        <details class="panel tool-panel"><summary><span><b>Road resilience</b><small>Report an incident and watch the agent re-plan</small></span><em>+</em></summary><div class="form-grid"><select id="blockedSource" aria-label="Blocked road source"></select><select id="blockedDestination" aria-label="Blocked road destination"></select></div><div class="form-grid"><input id="incidentReason" type="text" maxlength="120" placeholder="Reason, e.g. construction"><select id="incidentSeverity" aria-label="Incident severity"><option value="LOW">Low</option><option value="HIGH" selected>High</option><option value="CRITICAL">Critical</option></select></div><button id="blockRoadButton" class="secondary" type="button">Report blocked road</button><p id="blockMessage" class="hint"></p></details>
+    </section>
+
+    <section class="panel history-panel"><div class="panel-head"><div><p class="eyebrow">LOCAL DEMO HISTORY</p><h2>Recent deliveries</h2></div></div><div id="deliveryHistory" class="history-list"><p class="hint">No deliveries yet.</p></div></section>
+</main>
+<div id="toastRegion" class="toast-region" role="status" aria-live="polite"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

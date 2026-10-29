@@ -1,0 +1,9 @@
+{
+  "name": "CampusRoute AI",
+  "short_name": "CampusRoute",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fbfcfd",
+  "theme_color": "#3a2e4f",
+  "icons": []
+}

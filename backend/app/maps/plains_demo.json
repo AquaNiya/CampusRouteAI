@@ -1,0 +1,577 @@
+{
+  "campus": {
+    "name": "River Plains University Demo",
+    "institution": "North Indian plains campus demonstration",
+    "map_version": "1.0",
+    "map_status": "DEMO",
+    "area_acres": null,
+    "description": "Illustrative flatter-campus map where paved links dominate and elevation variation is smaller, with selected rough or restricted links for comparison. Replace with a verified GIS map before deployment.",
+    "source_url": "",
+    "source_note": "Synthetic DEMO coordinates generated for academic evaluation; not an official survey."
+  },
+  "settings": {
+    "max_gps_distance_km": 1.2
+  },
+  "boundary": [
+    [
+      28.6097,
+      77.2097
+    ],
+    [
+      28.6123,
+      77.2097
+    ],
+    [
+      28.6123,
+      77.2118
+    ],
+    [
+      28.6097,
+      77.2118
+    ]
+  ],
+  "locations": [
+    {
+      "id": "north_gate",
+      "name": "North Gate",
+      "latitude": 28.61,
+      "longitude": 77.21,
+      "type": "GATE",
+      "elevation": 520
+    },
+    {
+      "id": "academic_block_a",
+      "name": "Academic Block A",
+      "latitude": 28.61,
+      "longitude": 77.2105,
+      "type": "ACADEMIC",
+      "elevation": 523
+    },
+    {
+      "id": "academic_block_b",
+      "name": "Academic Block B",
+      "latitude": 28.61,
+      "longitude": 77.211,
+      "type": "ACADEMIC",
+      "elevation": 520
+    },
+    {
+      "id": "east_gate",
+      "name": "East Gate",
+      "latitude": 28.61,
+      "longitude": 77.2115,
+      "type": "GATE",
+      "elevation": 523
+    },
+    {
+      "id": "library",
+      "name": "Library",
+      "latitude": 28.6105,
+      "longitude": 77.21,
+      "type": "ACADEMIC",
+      "elevation": 527
+    },
+    {
+      "id": "innovation_lab",
+      "name": "Innovation Lab",
+      "latitude": 28.6105,
+      "longitude": 77.2105,
+      "type": "ACADEMIC",
+      "elevation": 530
+    },
+    {
+      "id": "auditorium",
+      "name": "Auditorium",
+      "latitude": 28.6105,
+      "longitude": 77.211,
+      "type": "ACADEMIC",
+      "elevation": 527
+    },
+    {
+      "id": "sports_complex",
+      "name": "Sports Complex",
+      "latitude": 28.6105,
+      "longitude": 77.2115,
+      "type": "SPORTS",
+      "elevation": 530
+    },
+    {
+      "id": "admin_block",
+      "name": "Admin Block",
+      "latitude": 28.611,
+      "longitude": 77.21,
+      "type": "ADMIN",
+      "elevation": 534
+    },
+    {
+      "id": "cafeteria",
+      "name": "Cafeteria",
+      "latitude": 28.611,
+      "longitude": 77.2105,
+      "type": "FOOD",
+      "elevation": 537
+    },
+    {
+      "id": "central_quad",
+      "name": "Central Quad",
+      "latitude": 28.611,
+      "longitude": 77.211,
+      "type": "OPEN_SPACE",
+      "elevation": 534
+    },
+    {
+      "id": "east_parking",
+      "name": "East Parking",
+      "latitude": 28.611,
+      "longitude": 77.2115,
+      "type": "PARKING",
+      "elevation": 537
+    },
+    {
+      "id": "health_centre",
+      "name": "Health Centre",
+      "latitude": 28.6115,
+      "longitude": 77.21,
+      "type": "MEDICAL",
+      "elevation": 541
+    },
+    {
+      "id": "girls_residence",
+      "name": "Girls Residence",
+      "latitude": 28.6115,
+      "longitude": 77.2105,
+      "type": "HOSTEL",
+      "elevation": 544
+    },
+    {
+      "id": "boys_residence",
+      "name": "Boys Residence",
+      "latitude": 28.6115,
+      "longitude": 77.211,
+      "type": "HOSTEL",
+      "elevation": 541
+    },
+    {
+      "id": "south_gate",
+      "name": "South Gate",
+      "latitude": 28.6115,
+      "longitude": 77.2115,
+      "type": "GATE",
+      "elevation": 544
+    },
+    {
+      "id": "research_centre",
+      "name": "Research Centre",
+      "latitude": 28.612,
+      "longitude": 77.21,
+      "type": "RESEARCH",
+      "elevation": 548
+    },
+    {
+      "id": "workshop",
+      "name": "Workshop",
+      "latitude": 28.612,
+      "longitude": 77.2105,
+      "type": "ACADEMIC",
+      "elevation": 551
+    },
+    {
+      "id": "west_parking",
+      "name": "West Parking",
+      "latitude": 28.612,
+      "longitude": 77.211,
+      "type": "PARKING",
+      "elevation": 548
+    },
+    {
+      "id": "visitor_centre",
+      "name": "Visitor Centre",
+      "latitude": 28.612,
+      "longitude": 77.2115,
+      "type": "ADMIN",
+      "elevation": 551
+    }
+  ],
+  "roads": [
+    {
+      "from": "north_gate",
+      "to": "academic_block_a",
+      "distance": 0.095,
+      "elevation_gain": 3,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "academic_block_a",
+      "to": "academic_block_b",
+      "distance": 0.095,
+      "elevation_gain": 0,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": true
+    },
+    {
+      "from": "academic_block_b",
+      "to": "east_gate",
+      "distance": 0.095,
+      "elevation_gain": 3,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "library",
+      "to": "innovation_lab",
+      "distance": 0.095,
+      "elevation_gain": 3,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "innovation_lab",
+      "to": "auditorium",
+      "distance": 0.095,
+      "elevation_gain": 0,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "auditorium",
+      "to": "sports_complex",
+      "distance": 0.095,
+      "elevation_gain": 3,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "admin_block",
+      "to": "cafeteria",
+      "distance": 0.095,
+      "elevation_gain": 3,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "cafeteria",
+      "to": "central_quad",
+      "distance": 0.095,
+      "elevation_gain": 0,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "central_quad",
+      "to": "east_parking",
+      "distance": 0.095,
+      "elevation_gain": 3,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "health_centre",
+      "to": "girls_residence",
+      "distance": 0.095,
+      "elevation_gain": 3,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "girls_residence",
+      "to": "boys_residence",
+      "distance": 0.095,
+      "elevation_gain": 0,
+      "terrain": "paved",
+      "accessible": false,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "boys_residence",
+      "to": "south_gate",
+      "distance": 0.095,
+      "elevation_gain": 3,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "research_centre",
+      "to": "workshop",
+      "distance": 0.095,
+      "elevation_gain": 3,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "workshop",
+      "to": "west_parking",
+      "distance": 0.095,
+      "elevation_gain": 0,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "west_parking",
+      "to": "visitor_centre",
+      "distance": 0.095,
+      "elevation_gain": 3,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "north_gate",
+      "to": "library",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "academic_block_a",
+      "to": "innovation_lab",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "academic_block_b",
+      "to": "auditorium",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "east_gate",
+      "to": "sports_complex",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "library",
+      "to": "admin_block",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "innovation_lab",
+      "to": "cafeteria",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "auditorium",
+      "to": "central_quad",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "sports_complex",
+      "to": "east_parking",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": false,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "admin_block",
+      "to": "health_centre",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "cafeteria",
+      "to": "girls_residence",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "central_quad",
+      "to": "boys_residence",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "east_parking",
+      "to": "south_gate",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "health_centre",
+      "to": "research_centre",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "girls_residence",
+      "to": "workshop",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "boys_residence",
+      "to": "west_parking",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "south_gate",
+      "to": "visitor_centre",
+      "distance": 0.095,
+      "elevation_gain": 7,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "north_gate",
+      "to": "innovation_lab",
+      "distance": 0.126,
+      "elevation_gain": 10,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "innovation_lab",
+      "to": "central_quad",
+      "distance": 0.126,
+      "elevation_gain": 4,
+      "terrain": "gravel",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "admin_block",
+      "to": "girls_residence",
+      "distance": 0.126,
+      "elevation_gain": 10,
+      "terrain": "mud",
+      "accessible": false,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "central_quad",
+      "to": "south_gate",
+      "distance": 0.126,
+      "elevation_gain": 10,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": true
+    },
+    {
+      "from": "health_centre",
+      "to": "workshop",
+      "distance": 0.126,
+      "elevation_gain": 10,
+      "terrain": "gravel",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "boys_residence",
+      "to": "visitor_centre",
+      "distance": 0.126,
+      "elevation_gain": 10,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    },
+    {
+      "from": "academic_block_b",
+      "to": "sports_complex",
+      "distance": 0.126,
+      "elevation_gain": 10,
+      "terrain": "paved",
+      "accessible": true,
+      "blocked": false,
+      "one_way": false
+    }
+  ]
+}
