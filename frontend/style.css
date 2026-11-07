@@ -31,3 +31,58 @@ button { cursor: pointer; }
 .tracking-actions .secondary { flex: 1 1 145px; }
 .proof-row input { background: var(--card); border: 1px solid var(--line); border-radius: 10px; min-height: 43px; padding: 9px 11px; }
 .proof-row .primary { flex: 1; }
+.map-actions {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+}
+
+.map-fullscreen-open {
+    overflow: hidden;
+}
+
+.map-panel.is-fullscreen {
+    background: var(--card);
+    display: flex;
+    flex-direction: column;
+    inset: 12px;
+    position: fixed;
+    z-index: 2000;
+}
+
+.map-panel.is-fullscreen .leaflet-map {
+    flex: 1;
+    height: calc(100vh - 190px);
+    min-height: 400px;
+}
+
+.legend-line.bfs {
+    border-color: #16a34a;
+}
+
+.legend-line.dfs {
+    border-color: #cbd5e1;
+}
+
+.legend-line.dijkstra {
+    border-color: #2563eb;
+}
+
+.legend-line.astar {
+    border-color: #dc2626;
+}
+
+@media (max-width: 520px) {
+    .map-actions {
+        align-items: flex-end;
+        flex-direction: column;
+    }
+
+    .map-panel.is-fullscreen {
+        inset: 0;
+    }
+
+    .map-panel.is-fullscreen .leaflet-map {
+        min-height: 350px;
+    }
+}
